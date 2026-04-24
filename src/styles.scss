@@ -906,7 +906,8 @@ app-root {
 .contact-panel a,
 .contact-form span,
 .site-footer p {
-	color: var(--muted);
+	color: rgba(226, 232, 240, 0.74);
+	-webkit-text-fill-color: rgba(226, 232, 240, 0.74);
 }
 
 .hero__copy {
@@ -1406,7 +1407,8 @@ app-root {
 }
 
 .leadership-card p {
-	color: white;
+	color: #ffffff;
+	-webkit-text-fill-color: #ffffff;
 	font-size: 1.1rem;
 }
 
