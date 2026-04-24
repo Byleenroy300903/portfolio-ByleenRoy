@@ -1095,6 +1095,10 @@ app-root {
 	line-height: 1.06;
 }
 
+.about-section .section-heading {
+	margin-bottom: 3.5rem;
+}
+
 .about-grid,
 .contact-layout {
 	grid-template-columns: repeat(2, minmax(0, 1fr));
