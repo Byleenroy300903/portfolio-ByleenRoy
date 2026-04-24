@@ -1,0 +1,5 @@
+- Project: Angular 21 standalone one-page portfolio with SCSS, GSAP, and lazy-loaded Three.js hero particles.
+- Design direction: dark futuristic aesthetic with neon violet, deep blue gradients, glassmorphism, glow, and high-interaction sections.
+- Keep new UI work responsive and visually expressive; avoid reverting to starter-template layouts.
+- Prefer standalone Angular components and minimal, focused edits.
+- Use `npm start` for local development and `npm run build` for production validation.

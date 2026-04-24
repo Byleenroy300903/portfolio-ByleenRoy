@@ -1,0 +1,295 @@
+<app-loading-screen [visible]="isLoading"></app-loading-screen>
+
+<div class="progress-indicator">
+  <span [style.transform]="'scaleY(' + progress + ')'" aria-hidden="true"></span>
+</div>
+
+<header class="site-header" [class.site-header--compact]="!isAtTop">
+  <a class="site-brand" href="#hero" (click)="$event.preventDefault(); scrollToSection('hero')">
+    <span class="site-brand__mark"></span>
+    <span class="site-brand__text" aria-label="Byleen Janet Roy">
+      <span class="site-brand__word">
+        <span class="site-brand__cell site-brand__cell--initial">B</span>
+        <span class="site-brand__cell">y</span>
+        <span class="site-brand__cell">l</span>
+        <span class="site-brand__cell">e</span>
+        <span class="site-brand__cell">e</span>
+        <span class="site-brand__cell">n</span>
+      </span>
+      <span class="site-brand__word">
+        <span class="site-brand__cell site-brand__cell--initial">J</span>
+        <span class="site-brand__cell">a</span>
+        <span class="site-brand__cell">n</span>
+        <span class="site-brand__cell">e</span>
+        <span class="site-brand__cell">t</span>
+      </span>
+      <span class="site-brand__word">
+        <span class="site-brand__cell site-brand__cell--initial">R</span>
+        <span class="site-brand__cell">o</span>
+        <span class="site-brand__cell">y</span>
+      </span>
+    </span>
+  </a>
+
+  <nav class="site-nav" aria-label="Primary">
+    @for (item of navItems; track item.id) {
+      <button
+        type="button"
+        class="site-nav__item"
+        [class.site-nav__item--active]="activeSection === item.id"
+        (click)="scrollToSection(item.id)"
+      >
+        {{ item.label }}
+      </button>
+    }
+  </nav>
+</header>
+
+<section
+  class="resume-launchpad"
+  [class.resume-launchpad--active]="hasSpawnedResumeLaunchpad"
+  aria-label="Resume download"
+>
+  <div class="resume-launchpad__halo" aria-hidden="true"></div>
+  <div class="resume-launchpad__card">
+    <div class="resume-launchpad__copy">
+      <span class="resume-launchpad__eyebrow">Resume</span>
+      <h2>Download CV.</h2>
+      <p>Projects, work, skills.</p>
+    </div>
+
+    <a
+      class="resume-launchpad__button"
+      [href]="resumeUrl"
+      download="Byleen_Janet_Roy_Resume.pdf"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Download Byleen Janet Roy resume"
+    >
+      <span class="resume-launchpad__button-core">
+        <span class="resume-launchpad__button-label">Download Resume</span>
+        <span class="resume-launchpad__button-subtitle">PDF · one tap deploy</span>
+      </span>
+      <span class="resume-launchpad__button-ring" aria-hidden="true">
+        <span class="resume-launchpad__button-arrow"></span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<main class="portfolio-shell">
+  <section id="hero" #sectionRef class="portfolio-section hero hero-section">
+    <div class="hero__background">
+      <app-particle-background></app-particle-background>
+      <app-animated-background></app-animated-background>
+      <div class="hero__gradient-orb hero__gradient-orb--violet parallax-layer"></div>
+      <div class="hero__gradient-orb hero__gradient-orb--blue"></div>
+      <div class="hero__gradient-orb hero__gradient-orb--cyan" style="bottom: -10rem; right: -8rem;"></div>
+      <div class="hero__grid"></div>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__intro reveal-item" [@fadeUp]>
+        <div class="hero__headline hero-interactive">
+          <span class="hero__headline-kicker">AI systems, security, and product craft</span>
+          <span class="hero__headline-line hero-text-fill">Byleen Janet Roy</span>
+          <span class="hero__headline-aura" aria-hidden="true"></span>
+        </div>
+        <p class="hero__role">
+          <span>{{ typedRole }}</span>
+          <i class="hero__cursor"></i>
+        </p>
+        <p class="hero__copy hero-copy-animated">
+          I design and engineer futuristic, outcome-driven products across AI, cybersecurity, and immersive digital experiences.
+        </p>
+        <div class="hero__actions">
+          <button class="button button--primary hero-button" type="button" (click)="scrollToSection('projects')">
+            <span class="button-text">View Work</span>
+            <span class="button-glow"></span>
+          </button>
+          <button class="button button--secondary hero-button" type="button" (click)="scrollToSection('contact')">
+            <span class="button-text">Contact</span>
+            <span class="button-glow"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-model-stage" aria-hidden="true">
+      <div class="hero-css-model">
+        <app-hero-avatar-3d></app-hero-avatar-3d>
+      </div>
+    </div>
+  </section>
+
+  <app-animated-divider></app-animated-divider>
+
+  <section id="about" #sectionRef class="portfolio-section about-section glass-section">
+    <div class="parallax-bg-layer" style="position: absolute; top: -20%; right: -10%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(168, 85, 247, 0.15), transparent 70%); filter: blur(80px); z-index: -1;"></div>
+    <div class="section-heading reveal-item">
+      <p class="eyebrow">About</p>
+      <h2>Engineering bold systems with intelligence, clarity, and edge.</h2>
+    </div>
+    <div class="about-grid">
+      <article class="glass-card reveal-item parallax-layer">
+        <span class="glass-card__kicker">Profile</span>
+        <h3>AI-focused software engineer building outcome-driven systems.</h3>
+        <p>
+          Byleen Janet Roy is an AI-focused Software Engineer passionate about building impactful, real-world solutions. With strong expertise in AI, cybersecurity, and full-stack development, she actively participates in hackathons and innovation-driven projects.
+        </p>
+      </article>
+      <article class="glass-card glass-card--accent reveal-item parallax-layer" style="animation-delay: 0.1s;">
+        <span class="glass-card__kicker">Current focus</span>
+        <h3>AI systems that perform under real constraints.</h3>
+        <p>Currently working as an Associate Developer at Expeditors International Pvt Ltd while continuing to build AI systems, enterprise workflows, and outcome-driven software under real constraints.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" #sectionRef class="portfolio-section skills-section">
+    <div class="parallax-bg-layer" style="position: absolute; bottom: -15%; left: -8%; width: 450px; height: 450px; border-radius: 50%; background: radial-gradient(circle, rgba(34, 211, 238, 0.12), transparent 70%); filter: blur(70px); z-index: -1;"></div>
+    <div class="section-heading reveal-item">
+      <p class="eyebrow">Capabilities</p>
+      <h2>Deep technical range across product, intelligence, and security.</h2>
+    </div>
+    <app-tech-stack-triangle class="reveal-item"></app-tech-stack-triangle>
+    <div class="skills-grid">
+      @for (group of skillGroups; track group.title) {
+        <article class="skill-card reveal-item">
+          <div class="skill-card__header">
+            <span>{{ group.icon }}</span>
+            <h3>{{ group.title }}</h3>
+          </div>
+          <div class="skill-list">
+            @for (skill of group.skills; track skill.name) {
+              <div class="skill-item">
+                <div class="skill-item__meta">
+                  <span>{{ skill.name }}</span>
+                  <strong>{{ skill.level }}%</strong>
+                </div>
+                <div class="skill-item__track">
+                  <div class="skill-item__fill" [style.width.%]="skill.level"></div>
+                </div>
+              </div>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section id="projects" #sectionRef class="portfolio-section projects-section">
+    <div class="section-heading reveal-item">
+      <p class="eyebrow">Selected Projects</p>
+      <h2>Interactive problem solving shaped into ambitious, real-world builds.</h2>
+    </div>
+    <div class="projects-grid">
+      @for (project of projects; track project.title) {
+        <article
+          #projectCard
+          class="project-card reveal-item"
+          (click)="openProject(project)"
+        >
+          <div class="project-card__glow"></div>
+          <p class="project-card__subtitle">{{ project.subtitle }}</p>
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <div class="project-card__footer">
+            <span>{{ project.impact }}</span>
+            <button class="project-card__button" type="button">Expand</button>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section id="experience" #sectionRef class="portfolio-section experience-section glass-section">
+    <div class="section-heading reveal-item">
+      <p class="eyebrow">Experience</p>
+      <h2>A trajectory built through research, internships, and high-pressure learning loops.</h2>
+    </div>
+    <div class="timeline">
+      @for (item of experienceItems; track item.title) {
+        <article class="timeline__item reveal-item">
+          <span class="timeline__dot"></span>
+          <div class="timeline__content">
+            <p class="timeline__period">{{ item.period }}</p>
+            <h3>{{ item.title }}</h3>
+            <h4>{{ item.organization }}</h4>
+            <p>{{ item.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section id="achievements" #sectionRef class="portfolio-section achievements-section">
+    <div class="section-heading reveal-item">
+      <p class="eyebrow">Achievements</p>
+      <h2>Competitive wins, finals, and national-stage participation.</h2>
+    </div>
+    <div class="achievement-marquee reveal-item">
+      @for (item of achievements; track item) {
+        <span>{{ item }}</span>
+      }
+    </div>
+  </section>
+
+  <section id="leadership" #sectionRef class="portfolio-section leadership-section glass-section">
+    <div class="section-heading reveal-item">
+      <p class="eyebrow">Leadership</p>
+      <h2>Community roles that sharpen execution, empathy, and influence.</h2>
+    </div>
+    <div class="leadership-grid">
+      @for (item of leadershipItems; track item; let index = $index) {
+        <article class="leadership-card reveal-item">
+          <span>{{ (index + 1).toString().padStart(2, '0') }}</span>
+          <p>{{ item }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section id="contact" #sectionRef class="portfolio-section contact-section">
+    <div class="section-heading reveal-item">
+      <p class="eyebrow">Contact</p>
+      <h2>Let’s build work that feels advanced, useful, and impossible to ignore.</h2>
+    </div>
+
+    <div class="contact-layout">
+      <article class="contact-panel reveal-item">
+        <button type="button" class="contact-link" (click)="copyToClipboard(contactLinks.email, 'Email copied!')">{{ contactLinks.email }}</button>
+        <button type="button" class="contact-link" (click)="copyToClipboard(contactLinks.phone, 'Phone copied!')">{{ contactLinks.phone }}</button>
+        <a href="https://github.com/Byleenroy300903" target="_blank" rel="noreferrer" class="contact-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/byleen-janet-roy-72b000250" target="_blank" rel="noreferrer" class="contact-link">LinkedIn</a>
+      </article>
+
+      <form class="contact-form reveal-item" (submit)="$event.preventDefault()">
+        <label>
+          <span>Name</span>
+          <input type="text" placeholder="Your name" />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" placeholder="Your email" />
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea rows="5" placeholder="Tell me about your project"></textarea>
+        </label>
+        <a class="button button--primary button--full" [href]="'mailto:' + contactLinks.email">Send via Email</a>
+      </form>
+    </div>
+
+    <footer class="site-footer reveal-item">
+      <p>© {{ currentYear }} Byleen Janet Roy</p>
+      <button type="button" class="site-footer__top" (click)="scrollToSection('hero')">Back to top</button>
+    </footer>
+  </section>
+</main>
+
+@if (selectedProject) {
+  <div [@modalFade]>
+    <app-project-modal [project]="selectedProject" (close)="closeProject()"></app-project-modal>
+  </div>
+}
