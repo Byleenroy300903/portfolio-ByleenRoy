@@ -1,6 +1,11 @@
 html {
 	scroll-behavior: smooth;
-	color-scheme: dark;
+	color-scheme: only dark;
+}
+
+* {
+	-webkit-tap-highlight-color: transparent;
+	forced-color-adjust: none;
 }
 
 body {
@@ -13,6 +18,7 @@ body {
 
 * {
 	box-sizing: border-box;
+	color-scheme: only dark;
 }
 
 button,
