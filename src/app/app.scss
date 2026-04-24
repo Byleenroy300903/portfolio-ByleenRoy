@@ -563,12 +563,13 @@
 
 // Section heading glow
 .section-heading h2 {
-	background: linear-gradient(135deg, #f5f3ff, rgba(168, 85, 247, 0.7));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
+	background: linear-gradient(135deg, #f5f3ff, rgba(168, 85, 247, 0.7)) !important;
+	-webkit-background-clip: text !important;
+	-webkit-text-fill-color: transparent !important;
+	background-clip: text !important;
 	transition: 280ms ease;
 	filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.3));
+	color: #f5f3ff;
 }
 
 .glass-section .section-heading:hover h2 {
